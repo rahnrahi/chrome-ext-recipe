@@ -9,6 +9,7 @@ function RecipeForm() {
 
   const [formData, setFormData] = React.useState(recipeFormData)
   const [isFormValid, setIsFormValid] = React.useState(false)
+  const [descCount, setDescCount] = React.useState(0)
 
   React.useEffect(() => {
     const formFieldsVals = Object.keys(formData).map(fld => formData[fld])
@@ -16,6 +17,11 @@ function RecipeForm() {
     const isValid = emptyFields.length === 0
     setIsFormValid(isValid)
   }, [formData])
+
+  React.useEffect(() => {
+    const desclength = formData.description.length;
+    setDescCount(desclength)
+  }, [formData.description])
 
   const goBack = _ => {
     chrome.runtime.sendMessage(chrome.runtime.id, { type: 'NEWFORM', formstate: false })
@@ -65,8 +71,8 @@ function RecipeForm() {
       </div>
       <div className='flex-full'>
         <label>Description</label>
-        <textarea rows={6} value={formData.description} maxLength={250} onChange={handleChange} name='description'></textarea>
-        <span className='desc-info'>0/200 Characters</span>
+        <textarea rows={6} value={formData.description} maxLength={200} onChange={handleChange} name='description'></textarea>
+        <span className='desc-info'>{descCount}/200 Characters</span>
       </div>
       <div className='flex-one-half select-wrapper'>
         <label>Difficulty</label>
