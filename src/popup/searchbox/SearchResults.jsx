@@ -4,13 +4,21 @@ import spain1 from '../../assets/spain1.png'
 import {difficulties} from '../constants'
 
 function SearchResults({ recipes }) {
-  if (recipes.length == 0) {
+
+  const [isOpen, setIsopen] = React.useState(false);
+
+  React.useEffect(()=>{
+    setIsopen(true)
+  }, [recipes])
+
+  if (recipes.length == 0 || !isOpen) {
     return <></>
   }
 
   const selectedRecipe = recipe =>{
      chrome.storage.sync.set({ recipe })
      chrome.runtime.sendMessage(chrome.runtime.id,{ type: 'RECIPE', recipe })
+     setIsopen(false);
   }
 
 

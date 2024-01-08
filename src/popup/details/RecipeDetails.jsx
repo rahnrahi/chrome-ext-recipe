@@ -1,16 +1,15 @@
 import './RecipeDetails.css'
-import paella from '../../assets/paella.svg'
 
-function RecipeDetails() {
+function RecipeDetails({ curRecipe }) {
   return (
     <div id="recipe-details">
       <div className='item'>
         <label htmlFor="">Protein</label>
-        <span>Jumbo Shrimp</span>
+        <span>{curRecipe?.protein}</span>
       </div>
       <div className='item'>
         <label htmlFor="">Spice Level</label>
-        <span>Hot</span>
+        <span>{curRecipe?.spice}</span>
       </div>
       <div className='item'>
         <label htmlFor="">Spices</label>
@@ -18,23 +17,23 @@ function RecipeDetails() {
       </div>
       <div className='item'>
         <label htmlFor="">Cooking Oil</label>
-        <span className='text-sunfire'>Spanish Olive Oil</span>
+        <span className='text-sunfire'>{curRecipe?.cookingOil}</span>
       </div>
       <div className='item'>
         <label htmlFor="">Volume/Weight</label>
-        <span>700g</span>
+        <span>{curRecipe?.volume}g</span>
       </div>
       <div className='item'>
         <label htmlFor="">Serves</label>
-        <span>4</span>
+        <span>{curRecipe?.serves}</span>
       </div>
       <div className='item'>
         <label htmlFor="">Authenticity</label>
-        <span className='text-sunfire'>Unverified</span>
+        <span className='text-sunfire'>{curRecipe?.authenticity}</span>
       </div>
       <div className='item'>
         <label htmlFor="">Stock</label>
-        <span className='text-sunfire'>Chicken</span>
+        <span className='text-sunfire'>{curRecipe?.stock}</span>
       </div>
     </div>
   );
