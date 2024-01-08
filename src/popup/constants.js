@@ -4,6 +4,7 @@ export const difficulties = {
   3: {text:'Easy', color:'#6CF600'},
 }
 export const countries = [
+  {"name": "Country origin", "code": ""},
   {"name": "Afghanistan", "code": "AF"},
   {"name": "land Islands", "code": "AX"},
   {"name": "Albania", "code": "AL"},
@@ -27,3 +28,18 @@ export const countries = [
   {"name": "Belarus", "code": "BY"},
   {"name": "Belgium", "code": "BE"}
 ];
+export const recipeFormData = {
+  "name": "",
+  "origin": "",
+  "description": "",
+  "difficulty": 3,
+  "protein": "",
+  "produce": "",
+  "spice": "",
+  "cookingOil": "",
+  "volume": "",
+  "serves": "",
+  "authenticity": "Unverified",
+  "stock": ""
+}
+export const API_URL = 'https://master-7rqtwti-yj2le3kr2yhmu.uk-1.platformsh.site/yumazoo/recipes'

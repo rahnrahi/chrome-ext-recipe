@@ -2,6 +2,7 @@ import React from 'react';
 import SearchResults from './SearchResults';
 import './Searchbox.css'
 import useDebounce from './useDebounce';
+import { API_URL } from '../constants';
 
 
 function SearchBox() {
@@ -13,7 +14,7 @@ function SearchBox() {
       setRecipes([])
       return
     }
-    const response = await fetch("https://master-7rqtwti-yj2le3kr2yhmu.uk-1.platformsh.site/yumazoo/recipes");
+    const response = await fetch(API_URL);
     const jsonResponse = await response.json();
     search = search.toLowerCase();
     const filteredRecipes = jsonResponse.message.filter(r=>{
