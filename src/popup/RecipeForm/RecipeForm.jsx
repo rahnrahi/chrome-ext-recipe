@@ -1,5 +1,5 @@
 import karrowLeft from '../../assets/keyboard-arrow-left.svg'
-import './RecipeForm.css';
+import './RecipeForm.scss';
 import { API_URL, countries, difficulties } from '../constants';
 import React from 'react';
 import { recipeFormData } from '../constants';

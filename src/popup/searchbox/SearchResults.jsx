@@ -1,5 +1,5 @@
 import React from 'react';
-import './SearchResults.css'
+import './SearchResults.scss'
 import spain1 from '../../assets/spain1.png'
 import {difficulties} from '../constants'
 

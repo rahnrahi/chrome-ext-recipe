@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchResults from './SearchResults';
-import './Searchbox.css'
+import './Searchbox.scss'
 import useDebounce from './useDebounce';
 import { API_URL } from '../constants';
 
