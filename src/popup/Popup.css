@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+  background: #0D1119;
+}
 @media (prefers-color-scheme: light) {
   a:hover {
     color: #61dafb;
