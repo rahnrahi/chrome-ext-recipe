@@ -16,10 +16,13 @@
     align-items: center;
 }
 
-.social-icons img {
-    padding: 3px;
-    cursor: pointer;
-}
+.social-icons{
+    display: flex;
+    img {
+        padding: 3px;
+        cursor: pointer;
+    }
+} 
 
 .recipe-name {
     padding-left: .5rem;

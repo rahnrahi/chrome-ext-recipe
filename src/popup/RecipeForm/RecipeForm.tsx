@@ -55,76 +55,76 @@ const RecipeForm = (): React.ReactElement=> {
   }
 
   return (<>
-    <div id='heading' onClick={() => goBack()}>
+    <div id='heading' className='flex text-white justify-start items-start font-bold text-lg cursor-pointer' onClick={() => goBack()}>
       <img src={karrowLeft} /> Add new recipe
     </div>
-    <hr />
-    <div id='form-container'>
-      <div className='flex-one-half'>
-        <label>Name</label>
-        <input type='text' value={formData.name} name='name' onChange={handleChange} />
+    <hr className='border-solid border-1 w-full'/>
+    <div id='form-container' className='flex self-stretch text-white flex-row flex-wrap gap-6'>
+      <div className='flex-one-half flex flex-col'>
+        <label className='text-[1rem] pb-[0.625rem] font-medium'>Name</label>
+        <input className='px-2 py-[.6875rem] border-none rounded-md leading-6 font-normal not-italic' type='text' value={formData.name} name='name' onChange={handleChange} />
       </div>
-      <div className='flex-one-half select-wrapper'>
-        <label>Country origin</label>
-        <select value={formData.origin} onChange={handleChange} name="origin" id="origin">
+      <div className='flex-one-half flex flex-col select-wrapper relative'>
+        <label className='text-[1rem] pb-[0.625rem] font-medium'>Country origin</label>
+        <select className='pl-2 text-[.9rem] py-[.6875rem] border-none rounded-md leading-6  font-normal not-italic' value={formData.origin} onChange={handleChange} name="origin" id="origin">
           {countries.map((country, index) => (<option key={index} value={country.code}>{country.name}</option>))}
         </select>
       </div>
-      <div className='flex-full'>
-        <label>Description</label>
-        <textarea rows={6} value={formData.description} maxLength={200} onChange={handleChange} name='description'></textarea>
+      <div className='w-full flex flex-col'>
+        <label className='text-[1rem] pb-[0.625rem] font-medium'>Description</label>
+        <textarea className='px-2 py-[.6875rem] border-none rounded-md' rows={6} value={formData.description} maxLength={200} onChange={handleChange} name='description'></textarea>
         <span className='desc-info'>{descCount}/200 Characters</span>
       </div>
-      <div className='flex-one-half select-wrapper'>
-        <label>Difficulty</label>
-        <select value={formData.difficulty} onChange={handleChange} name="difficulty" id="difficulty">
+      <div className='flex-one-half flex flex-col select-wrapper relative'>
+        <label className='text-[1rem] pb-[0.625rem] font-medium'>Difficulty</label>
+        <select className='text-[.9rem] px-2 py-[.6875rem] border-none rounded-md leading-6  font-normal not-italic' value={formData.difficulty} onChange={handleChange} name="difficulty" id="difficulty">
           {Object.keys(difficulties).map((index) => (<option key={index} value={index}>
             {difficulties[index as keyof DifficultiesType]['text']}
             </option>))
           }
         </select>
       </div>
-      <div className='flex-one-half'>
-        <label>Protein</label>
-        <input type='text' value={formData.protein} onChange={handleChange} name='protein' />
+      <div className='flex-one-half flex flex-col'>
+        <label className='text-[1rem] pb-[0.625rem] font-medium'>Protein</label>
+        <input className='px-2 py-[.6875rem] border-none rounded-md leading-6  font-normal not-italic' type='text' value={formData.protein} onChange={handleChange} name='protein' />
       </div>
-      <div className='flex-one-half'>
-        <label>Produce</label>
-        <input type='text' value={formData.produce} onChange={handleChange} name='produce' />
+      <div className='flex-one-half flex flex-col'>
+        <label className='text-[1rem] pb-[0.625rem] font-medium'>Produce</label>
+        <input className='px-2 py-[.6875rem] border-none rounded-md leading-6  font-normal not-italic' type='text' value={formData.produce} onChange={handleChange} name='produce' />
       </div>
-      <div className='flex-one-half'>
-        <label>Spice</label>
-        <input type='text' value={formData.spice} onChange={handleChange} name='spice' />
+      <div className='flex-one-half flex flex-col'>
+        <label className='text-[1rem] pb-[0.625rem] font-medium'>Spice</label>
+        <input className='px-2 py-[.6875rem] border-none rounded-md leading-6  font-normal not-italic' type='text' value={formData.spice} onChange={handleChange} name='spice' />
       </div>
-      <div className='flex-one-half'>
-        <label>Cooking Oil?</label>
-        <input type='text' value={formData.cookingOil} onChange={handleChange} name='cookingOil' />
+      <div className='flex-one-half flex flex-col'>
+        <label className='text-[1rem] pb-[0.625rem] font-medium'>Cooking Oil?</label>
+        <input className='px-2 py-[.6875rem] border-none rounded-md leading-6  font-normal not-italic' type='text' value={formData.cookingOil} onChange={handleChange} name='cookingOil' />
       </div>
-      <div className='flex-one-half input-suffix'>
-        <label>Volume</label>
-        <input type='number' value={formData.volume} onChange={handleChange} maxLength={5} name='volume' />
-        <p>grams</p>
+      <div className='flex-one-half flex flex-col input-suffix relative'>
+        <label className='text-[1rem] pb-[0.625rem] font-medium'>Volume</label>
+        <input  className='px-2 py-[.6875rem] border-none rounded-md leading-6  font-normal not-italic' type='number' value={formData.volume} onChange={handleChange} maxLength={5} name='volume' />
+        <p className='top-[2.5rem] right-[0.6875rem] absolute not-italic font-light'>grams</p>
       </div>
-      <div className='flex-one-half input-suffix'>
-        <label>Serves</label>
-        <input type='number' value={formData.serves} onChange={handleChange} maxLength={5} name='serves' />
-        <p>people</p>
+      <div className='flex-one-half flex flex-col input-suffix relative'>
+        <label className='text-[1rem] pb-[0.625rem] font-medium'>Serves</label>
+        <input className='px-2 py-[.6875rem] border-none rounded-md leading-6  font-normal not-italic' type='number' value={formData.serves} onChange={handleChange} maxLength={5} name='serves' />
+        <p className='top-[2.5rem] right-[0.6875rem] absolute not-italic font-light'>people</p>
       </div>
-      <div className='flex-one-half select-wrapper'>
-        <label>Authenticity</label>
-        <select name="authenticity" value={formData.authenticity} onChange={handleChange} id="authenticity">
+      <div className='flex-one-half flex flex-col select-wrapper relative'>
+        <label className='text-[1rem] pb-[0.625rem] font-medium'>Authenticity</label>
+        <select className='text-[.9rem] px-2 py-[.6875rem] border-none rounded-md leading-6  font-normal not-italic' name="authenticity" value={formData.authenticity} onChange={handleChange} id="authenticity">
           <option value="Unverified">Unverified</option>
           <option value="Verified">Verified</option>
         </select>
       </div>
-      <div className='flex-full'>
-        <label>Stock</label>
-        <input type='text' value={formData.stock} onChange={handleChange} name='stock' />
+      <div className='w-full flex flex-col'>
+        <label className='text-[1rem] pb-[0.625rem] font-medium'>Stock</label>
+        <input className='px-2 py-[.6875rem] border-none rounded-md leading-6  font-normal not-italic' type='text' value={formData.stock} onChange={handleChange} name='stock' />
       </div>
-      <div className='flex-full'>
+      <div className='w-full flex flex-col'>
         <button type='button'
           onClick={handleForm}
-          disabled={!isFormValid} name='add-recipe' id='add-recipe' >Add Recipe</button>
+          disabled={!isFormValid} className='rounded-md disabled:opacity-50 text-white border-none cursor-pointer pr-[.6875rem] px-[.5625rem] py-[.875rem]' name='add-recipe' id='add-recipe' >Add Recipe</button>
       </div>
     </div>
   </>);
