@@ -3,14 +3,14 @@ import './RecipeForm.scss';
 import { API_URL, countries, difficulties } from '../constants';
 import React from 'react';
 import { recipeFormData } from '../constants';
-import { DifficultiesType, RecipeType, FormFieldTypes } from '../types';
+import { DifficultiesType, RecipeType } from '../types';
 
 
 const RecipeForm = (): React.ReactElement=> {
 
-  const [formData, setFormData] = React.useState(recipeFormData)
-  const [isFormValid, setIsFormValid] = React.useState(false)
-  const [descCount, setDescCount] = React.useState(0)
+  const [formData, setFormData] = React.useState<RecipeType>(recipeFormData)
+  const [isFormValid, setIsFormValid] = React.useState<boolean>(false)
+  const [descCount, setDescCount] = React.useState<number>(0)
 
   React.useEffect(() => {
     const formFieldsVals = Object.keys(formData).map((fld) => formData[fld as keyof RecipeType])
