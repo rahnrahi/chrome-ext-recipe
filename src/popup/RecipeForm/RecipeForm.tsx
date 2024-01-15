@@ -3,7 +3,7 @@ import './RecipeForm.scss';
 import { API_URL, countries, difficulties } from '../constants';
 import React from 'react';
 import { recipeFormData } from '../constants';
-import { DifficultiesType, RecipeType } from '../types';
+import { DifficultiesType, RecipeType, FormFieldTypes } from '../types';
 
 
 const RecipeForm = (): React.ReactElement=> {
@@ -27,7 +27,7 @@ const RecipeForm = (): React.ReactElement=> {
   const goBack = () => {
     chrome.runtime.sendMessage(chrome.runtime.id, { type: 'NEWFORM', formstate: false })
   }
-  const handleChange = (event: React.ChangeEvent<any>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   }
   const handleForm = async () => {

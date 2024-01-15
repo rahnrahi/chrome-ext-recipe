@@ -25,3 +25,4 @@ export interface RecipeType{
   authenticity: string
   stock: string
 }
+
