@@ -4,7 +4,7 @@ import { Popup } from './Popup'
 import "@fontsource/bai-jamjuree";
 import './index.css'
 
-ReactDOM.createRoot(document.getElementById('app')).render(
+ReactDOM.createRoot(document.getElementById('app') as HTMLElement).render(
   <React.StrictMode>
     <Popup />
   </React.StrictMode>,

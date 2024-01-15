@@ -1,15 +1,15 @@
 import React from 'react';
 import SearchResults from './SearchResults';
 import './Searchbox.scss'
-import useDebounce from './useDebounce';
+import useDebounce from './UseDebounce';
 import { API_URL } from '../constants';
 
 
-function SearchBox() {
+const SearchBox = (): React.ReactElement=> {
   const [search, setSearch] = React.useState('');
   const [recipes, setRecipes] = React.useState([]);
 
-  const fetchRecipes = async (search)=>{
+  const fetchRecipes = async (search: string)=>{
     if(search==''){
       setRecipes([])
       return
@@ -17,7 +17,7 @@ function SearchBox() {
     const response = await fetch(API_URL);
     const jsonResponse = await response.json();
     search = search.toLowerCase();
-    const filteredRecipes = jsonResponse.message.filter(r=>{
+    const filteredRecipes = jsonResponse.message.filter((r: any)=>{
       const lowerName = r.name.toLowerCase();
       return lowerName.includes(search)
     })
@@ -30,7 +30,7 @@ function SearchBox() {
     }, [search], 500
   );
 
-  const handleSearch = (e) => setSearch(e.target.value);
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value);
 
 
   return (<div id='search'>

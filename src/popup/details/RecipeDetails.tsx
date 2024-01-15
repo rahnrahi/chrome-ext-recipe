@@ -1,6 +1,13 @@
+import React from 'react';
 import './RecipeDetails.css'
+import { RecipeType } from '../types'
 
-function RecipeDetails({ curRecipe }) {
+
+interface Props {
+  curRecipe?: RecipeType;
+}
+
+const RecipeDetails: React.FC<Props> = ({ curRecipe }) => {
   return (
     <div id="recipe-details">
       <div className='item'>

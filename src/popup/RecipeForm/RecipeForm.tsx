@@ -3,16 +3,17 @@ import './RecipeForm.scss';
 import { API_URL, countries, difficulties } from '../constants';
 import React from 'react';
 import { recipeFormData } from '../constants';
+import { DifficultiesType, RecipeType } from '../types';
 
 
-function RecipeForm() {
+const RecipeForm = (): React.ReactElement=> {
 
   const [formData, setFormData] = React.useState(recipeFormData)
   const [isFormValid, setIsFormValid] = React.useState(false)
   const [descCount, setDescCount] = React.useState(0)
 
   React.useEffect(() => {
-    const formFieldsVals = Object.keys(formData).map(fld => formData[fld])
+    const formFieldsVals = Object.keys(formData).map((fld) => formData[fld as keyof RecipeType])
     const emptyFields = formFieldsVals.filter(val => val === "")
     const isValid = emptyFields.length === 0
     setIsFormValid(isValid)
@@ -23,14 +24,14 @@ function RecipeForm() {
     setDescCount(desclength)
   }, [formData.description])
 
-  const goBack = _ => {
+  const goBack = () => {
     chrome.runtime.sendMessage(chrome.runtime.id, { type: 'NEWFORM', formstate: false })
   }
-  const handleChange = event => {
+  const handleChange = (event: React.ChangeEvent<any>) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   }
   const handleForm = async () => {
-    let difficulty = parseInt(formData['difficulty'])
+    let difficulty = parseInt(String(formData['difficulty']))
     difficulty = isNaN(difficulty) ? 1 : difficulty
     formData['difficulty'] = difficulty;
     setIsFormValid(false)
@@ -77,7 +78,10 @@ function RecipeForm() {
       <div className='flex-one-half select-wrapper'>
         <label>Difficulty</label>
         <select value={formData.difficulty} onChange={handleChange} name="difficulty" id="difficulty">
-          {Object.keys(difficulties).map((index) => (<option key={index} value={index}>{difficulties[index]['text']}</option>))}
+          {Object.keys(difficulties).map((index) => (<option key={index} value={index}>
+            {difficulties[index as keyof DifficultiesType]['text']}
+            </option>))
+          }
         </select>
       </div>
       <div className='flex-one-half'>

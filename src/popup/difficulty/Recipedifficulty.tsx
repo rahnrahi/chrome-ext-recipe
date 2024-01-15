@@ -1,3 +1,4 @@
+import React from 'react'
 import './Recipedifficulty.css'
 import spain1 from '../../assets/spain1.png'
 import arrow from '../../assets/arrow.png'
@@ -5,11 +6,17 @@ import twitter from '../../assets/twitter.png'
 import micon from '../../assets/m.png'
 import paella from '../../assets/paella.svg'
 import { difficulties } from '../constants'
+import { DifficultiesType, RecipeType } from '../types'
 
-function Recipedifficulty({curRecipe}) {
+
+interface Props {
+  curRecipe?: RecipeType;
+}
+
+const Recipedifficulty: React.FC<Props> = ({ curRecipe })=> {
   const difficultyType = curRecipe?.difficulty || 1;
-  const difficulty = difficulties[difficultyType]
-  const addRecipe = _ =>{
+  const difficulty = difficulties[difficultyType as keyof DifficultiesType]
+  const addRecipe = () =>{
     chrome.runtime.sendMessage(chrome.runtime.id,{ type: 'NEWFORM', formstate: true })
   }
 

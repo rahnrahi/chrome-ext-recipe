@@ -2,8 +2,13 @@ import React from 'react';
 import './SearchResults.scss'
 import spain1 from '../../assets/spain1.png'
 import {difficulties} from '../constants'
+import { RecipeType } from '../types';
 
-function SearchResults({ recipes }) {
+interface Props {
+  recipes: RecipeType[] | [];
+}
+
+const SearchResults: React.FC<Props> = ({ recipes }) => {
 
   const [isOpen, setIsopen] = React.useState(false);
 
@@ -15,7 +20,7 @@ function SearchResults({ recipes }) {
     return <></>
   }
 
-  const selectedRecipe = recipe =>{
+  const selectedRecipe = (recipe: RecipeType) =>{
      chrome.storage.sync.set({ recipe })
      chrome.runtime.sendMessage(chrome.runtime.id,{ type: 'RECIPE', recipe })
      setIsopen(false);
@@ -25,7 +30,7 @@ function SearchResults({ recipes }) {
   return (
     <div id="search-results">
       {recipes.map((recipe, key) => {
-        var difficulty = difficulties[recipe['difficulty']]
+        var difficulty = difficulties[recipe['difficulty'] as keyof typeof difficulties]
         return (
           <div className="search-item" onClick={()=>selectedRecipe(recipe)} key={key}>
             <div className="recipe-title">

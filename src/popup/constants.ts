@@ -1,4 +1,6 @@
-export const difficulties = {
+import { DifficultiesType, RecipeType } from "./types";
+
+export const difficulties:DifficultiesType = {
   1: {text:'Hard', color:'#FF003D'},
   2: {text:'Medium', color:'#F63B00'},
   3: {text:'Easy', color:'#6CF600'},
@@ -28,7 +30,7 @@ export const countries = [
   {"name": "Belarus", "code": "BY"},
   {"name": "Belgium", "code": "BE"}
 ];
-export const recipeFormData = {
+export const recipeFormData: RecipeType = {
   "name": "",
   "origin": "",
   "description": "",

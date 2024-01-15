@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
-
+import React from 'react'
 import './Popup.css'
 import SearchBox from './searchbox/Searchbox'
 import Recipedifficulty from './difficulty/Recipedifficulty'
 import RecipeDetails from './details/RecipeDetails'
 import RecipeForm from './RecipeForm/RecipeForm'
+import { recipeFormData } from './constants'
+import { RecipeType } from './types'
 
 export const Popup = () => {
-  const [curRecipe, setCurRecipe] = useState({})
-  const [newForm, setNewForm] = useState(false)
+  const [curRecipe, setCurRecipe] = useState<RecipeType>({...recipeFormData})
+  const [newForm, setNewForm] = useState<boolean>(false)
 
 
   useEffect(() => {
